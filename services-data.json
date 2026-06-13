@@ -1,0 +1,272 @@
+[
+  {
+    "id": 1,
+    "category": "Hair care/treatments",
+    "title": "Scalp care",
+    "description": "For oily or dandruff dry scalp",
+    "price": "From CA$75.00",
+    "duration": "1 hr",
+    "price_varies": false,
+    "image_url": null
+  },
+  {
+    "id": 2,
+    "category": "Hair care/treatments",
+    "title": "Hair treatments",
+    "description": "For dry hair",
+    "price": "From CA$105.00",
+    "duration": "1 hr",
+    "price_varies": false,
+    "image_url": null
+  },
+  {
+    "id": 3,
+    "category": "Cut",
+    "title": "Men's haircut",
+    "description": "Includes shampoo and blow dry",
+    "price": "From CA$43.00",
+    "duration": "45 min",
+    "price_varies": false,
+    "image_url": null
+  },
+  {
+    "id": 4,
+    "category": "Cut",
+    "title": "Men's haircut + Side-down perm",
+    "description": "Includes shampoo and blow dry",
+    "price": "From CA$70.00",
+    "duration": "1 hr 30 min",
+    "price_varies": false,
+    "image_url": null
+  },
+  {
+    "id": 5,
+    "category": "Cut",
+    "title": "Women's haircut",
+    "description": "Includes blow dry",
+    "price": null,
+    "duration": "45 min+",
+    "price_varies": true,
+    "image_url": null
+  },
+  {
+    "id": 6,
+    "category": "Cut",
+    "title": "Bangs",
+    "description": null,
+    "price": null,
+    "duration": "15 min+",
+    "price_varies": true,
+    "image_url": null
+  },
+  {
+    "id": 7,
+    "category": "Perm",
+    "title": "Bang perm",
+    "description": null,
+    "price": "CA$50.00",
+    "duration": "1 hr 30 min",
+    "price_varies": false,
+    "image_url": null
+  },
+  {
+    "id": 8,
+    "category": "Perm",
+    "title": "Volume Straightening Perm",
+    "description": "Straightens your hair with a natural curve. Little trim is included. Haircut is not included.",
+    "price": null,
+    "duration": "2 hr 30 min",
+    "price_varies": true,
+    "image_url": null
+  },
+  {
+    "id": 9,
+    "category": "Perm",
+    "title": "Men's Perm",
+    "description": "Includes haircut and blow dry",
+    "price": null,
+    "duration": "1 hr 30 min",
+    "price_varies": true,
+    "image_url": null
+  },
+  {
+    "id": 10,
+    "category": "Perm",
+    "title": "Down Perm",
+    "description": "Haircut is not included",
+    "price": null,
+    "duration": "30 min+",
+    "price_varies": true,
+    "image_url": null
+  },
+  {
+    "id": 11,
+    "category": "Perm",
+    "title": "Women's regular cold perm",
+    "description": "Includes little trim and blowdry. Special perms (twist, hippie perm) are extra cost. Haircut not included.",
+    "price": null,
+    "duration": "1 hr 30 min+",
+    "price_varies": true,
+    "image_url": null
+  },
+  {
+    "id": 12,
+    "category": "Perm",
+    "title": "Digital perm",
+    "description": "Little trim is included. Haircut is not included.",
+    "price": null,
+    "duration": "2 hr 30 min+",
+    "price_varies": true,
+    "image_url": null
+  },
+  {
+    "id": 13,
+    "category": "Perm",
+    "title": "Straight perm",
+    "description": "Little trim is included. Haircut is not included.",
+    "price": null,
+    "duration": "2 hr 30 min+",
+    "price_varies": true,
+    "image_url": null
+  },
+  {
+    "id": 14,
+    "category": "Perm",
+    "title": "Straight + digital perm",
+    "description": "Little trim is included. Haircut is not included.",
+    "price": null,
+    "duration": "3 hr 30 min+",
+    "price_varies": true,
+    "image_url": null
+  },
+  {
+    "id": 15,
+    "category": "Perm",
+    "title": "Root perm",
+    "description": "Haircut is not included",
+    "price": "From CA$110.00",
+    "duration": "1 hr 30 min",
+    "price_varies": false,
+    "image_url": null
+  },
+  {
+    "id": 16,
+    "category": "Colour",
+    "title": "Regular colour",
+    "description": "Haircut is not included",
+    "price": null,
+    "duration": "1 hr+",
+    "price_varies": true,
+    "image_url": null
+  },
+  {
+    "id": 17,
+    "category": "Colour",
+    "title": "Ammonia-free colour",
+    "description": "No odour, optimal scalp comfort. Haircut is not included.",
+    "price": null,
+    "duration": "1 hr+",
+    "price_varies": true,
+    "image_url": null
+  },
+  {
+    "id": 18,
+    "category": "Colour",
+    "title": "Bleach-out",
+    "description": "Haircut is not included. Toner or colour are not included.",
+    "price": null,
+    "duration": "2 hr+",
+    "price_varies": true,
+    "image_url": null
+  },
+  {
+    "id": 19,
+    "category": "Colour",
+    "title": "Full highlights",
+    "description": "Toner and colour are not included. Haircut not included.",
+    "price": null,
+    "duration": "2 hr+",
+    "price_varies": true,
+    "image_url": null
+  },
+  {
+    "id": 20,
+    "category": "Colour",
+    "title": "Design highlights/colour",
+    "description": "Bang highlights, secret colour, money pieces etc. Includes hair colour or toner. Haircut not included.",
+    "price": "From CA$150.00",
+    "duration": "2 hr 30 min",
+    "price_varies": false,
+    "image_url": null
+  },
+  {
+    "id": 21,
+    "category": "Colour",
+    "title": "Full balayage/ombre/sombre",
+    "description": "Includes hair colour or toner. Does not include haircut.",
+    "price": null,
+    "duration": "4 hr+",
+    "price_varies": true,
+    "image_url": null
+  },
+  {
+    "id": 22,
+    "category": "Styling",
+    "title": "Hair styling",
+    "description": null,
+    "price": null,
+    "duration": "30 min+",
+    "price_varies": true,
+    "image_url": null
+  },
+  {
+    "id": 23,
+    "category": "Makeup & Styling",
+    "title": "Makeup & Updo",
+    "description": null,
+    "price": "CA$370.00",
+    "duration": "1 hr 30 min",
+    "price_varies": false,
+    "image_url": null
+  },
+  {
+    "id": 24,
+    "category": "Makeup & Styling",
+    "title": "Makeup & Semi-Updo",
+    "description": null,
+    "price": "CA$320.00",
+    "duration": "1 hr 30 min",
+    "price_varies": false,
+    "image_url": null
+  },
+  {
+    "id": 25,
+    "category": "Makeup & Styling",
+    "title": "Makeup & Styling",
+    "description": null,
+    "price": "CA$270.00",
+    "duration": "1 hr 30 min",
+    "price_varies": false,
+    "image_url": null
+  },
+  {
+    "id": 26,
+    "category": "Makeup & Styling",
+    "title": "Makeup",
+    "description": null,
+    "price": "CA$230.00",
+    "duration": "1 hr",
+    "price_varies": false,
+    "image_url": null
+  },
+  {
+    "id": 27,
+    "category": "Makeup & Styling",
+    "title": "Wedding Makeup & Hair",
+    "description": null,
+    "price": "CA$420.00",
+    "duration": "2 hr",
+    "price_varies": false,
+    "image_url": null
+  }
+]

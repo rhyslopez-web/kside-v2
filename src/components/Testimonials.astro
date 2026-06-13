@@ -1,0 +1,304 @@
+---
+const reviews = [
+  {
+    name: 'Tina Truong',
+    excerpt: 'Judy layered it beautifully — my hair feels so light, soft and looks amazing... All the staffs are super friendly and welcoming. Highly recommend!',
+    service: 'Haircut & Digital Perm',
+    date: 'May 2025',
+  },
+  {
+    name: 'Kinah dulayyy',
+    excerpt: 'Judy did my hair and she did amazing! She always checked up on how I was doing, offered snacks and gave explanations throughout the process... 10/10 experience!',
+    service: 'First Visit',
+    date: 'Apr 2025',
+  },
+  {
+    name: 'bean Kim',
+    excerpt: "I've been to many salons in Vancouver, but this was by far my favorite. She really took the time to consult with me... the result was amazing. I'll definitely be coming back!!",
+    service: 'Layered Cut & Perm',
+    date: 'Mar 2025',
+  },
+  {
+    name: 'Sojung',
+    excerpt: 'Sally is a very kind and talented hairdresser! She cut my hair exactly the way I wanted... She also knows which styles suit me well and gave great recommendations.',
+    service: 'Haircut',
+    date: 'Feb 2025',
+  },
+  {
+    name: 'Layla Kim',
+    excerpt: "This place is the best hidden gem! The staff are friendly and super professional... You can genuinely feel how happy the employees are. I walked out with a great haircut and a happy feeling!",
+    service: 'Haircut',
+    date: 'Jan 2025',
+  },
+  {
+    name: 'Alain Justin N',
+    excerpt: "I've now gone twice to see Sally for a haircut and down perm. She did such an amazing job and took her time with my hair. The salon itself has a nice, relaxing atmosphere too...",
+    service: 'Haircut & Down Perm',
+    date: 'Dec 2024',
+  },
+];
+
+const CARDS_PER_PAGE = 4;
+const pages: typeof reviews[] = [];
+for (let i = 0; i < reviews.length; i += CARDS_PER_PAGE) {
+  pages.push(reviews.slice(i, i + CARDS_PER_PAGE));
+}
+---
+
+<section id="testimonials" class="py-24 testimonials-bg">
+
+  <!-- Header -->
+  <div class="px-4 max-w-6xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+      <div class="max-w-lg">
+        <h2 class="text-4xl sm:text-5xl font-bold leading-tight" style="color: #fff; font-family: var(--font-sans);">
+          Don't just take our<br />word for it.
+        </h2>
+      </div>
+      <div class="md:text-right">
+        <p class="text-base font-semibold" style="color: #fff; font-family: var(--font-sans);">
+          Rated 4.6/5 based on 439+ reviews.
+        </p>
+        <p class="text-sm mt-1" style="color: rgba(255,255,255,0.4); font-family: var(--font-sans);">
+          Showing our 5 star reviews on Google.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MOBILE carousel: native scroll-snap, 1 card + peek ── -->
+  <div
+    id="mobile-testimonial-track"
+    class="md:hidden flex gap-3 overflow-x-auto pb-2"
+    style="scroll-snap-type: x mandatory; scrollbar-width: none; -ms-overflow-style: none; padding-left: 1rem;"
+  >
+    {reviews.map((review, idx) => (
+      <div
+        class="flex-none rounded-2xl p-5 flex flex-col gap-4"
+        data-mobile-card={idx}
+        style="width: calc(85vw); scroll-snap-align: start; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);"
+      >
+        <div class="flex gap-1">
+          {[...Array(5)].map(() => (
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor" style="color: var(--color-blue);">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+            </svg>
+          ))}
+        </div>
+        <p class="text-sm leading-relaxed flex-grow" style="color: rgba(255,255,255,0.65); font-family: var(--font-sans); font-weight: 300;">
+          "{review.excerpt}"
+        </p>
+        <div class="flex items-center gap-3 pt-3" style="border-top: 1px solid rgba(255,255,255,0.08);">
+          <div
+            class="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
+            style="background: var(--color-blue); font-family: var(--font-sans);"
+          >
+            {review.name.charAt(0).toUpperCase()}
+          </div>
+          <div class="min-w-0">
+            <p class="text-xs font-semibold uppercase tracking-wide truncate" style="color: rgba(255,255,255,0.9); font-family: var(--font-sans);">
+              {review.name}
+            </p>
+            <p class="text-xs" style="color: rgba(255,255,255,0.3); font-family: var(--font-sans);">
+              {review.date}
+            </p>
+          </div>
+        </div>
+      </div>
+    ))}
+    <!-- trailing spacer so last card can snap flush left -->
+    <div class="flex-none" style="width: 1rem;"></div>
+  </div>
+
+  <!-- ── DESKTOP carousel: page-based 4-up ── -->
+  <div class="hidden md:block px-4 max-w-6xl mx-auto">
+    <div class="relative overflow-hidden">
+      <div id="testimonial-track" class="flex transition-transform duration-500 ease-in-out">
+        {pages.map(page => (
+          <div class="w-full flex-none grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {page.map(review => (
+              <div
+                class="rounded-2xl p-5 flex flex-col gap-4"
+                style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);"
+              >
+                <div class="flex gap-1">
+                  {[...Array(5)].map(() => (
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" viewBox="0 0 20 20" fill="currentColor" style="color: var(--color-blue);">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                  ))}
+                </div>
+                <p class="text-sm leading-relaxed flex-grow" style="color: rgba(255,255,255,0.65); font-family: var(--font-sans); font-weight: 300;">
+                  "{review.excerpt}"
+                </p>
+                <div class="flex items-center gap-3 pt-3" style="border-top: 1px solid rgba(255,255,255,0.08);">
+                  <div
+                    class="w-7 h-7 rounded-full flex items-center justify-center text-white text-xs font-bold flex-shrink-0"
+                    style="background: var(--color-blue); font-family: var(--font-sans);"
+                  >
+                    {review.name.charAt(0).toUpperCase()}
+                  </div>
+                  <div class="min-w-0">
+                    <p class="text-xs font-semibold uppercase tracking-wide truncate" style="color: rgba(255,255,255,0.9); font-family: var(--font-sans);">
+                      {review.name}
+                    </p>
+                    <p class="text-xs" style="color: rgba(255,255,255,0.3); font-family: var(--font-sans);">
+                      {review.date}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- Dots + Google link -->
+  <div class="mt-6 px-4 max-w-6xl mx-auto flex items-center justify-between">
+
+    <!-- Mobile dots (one per card) -->
+    <div class="flex gap-2 md:hidden" id="mobile-testimonial-dots">
+      {reviews.map((_, i) => (
+        <button
+          class="mobile-testimonial-dot rounded-full transition-all duration-300"
+          style={i === 0
+            ? "width: 24px; height: 8px; background: #fff;"
+            : "width: 8px; height: 8px; background: rgba(255,255,255,0.25);"}
+          data-index={i}
+          aria-label={`Review ${i + 1}`}
+        />
+      ))}
+    </div>
+
+    <!-- Desktop dots (one per page) -->
+    <div class="hidden md:flex gap-2" id="testimonial-dots">
+      {pages.map((_, i) => (
+        <button
+          class="testimonial-dot rounded-full transition-all duration-300"
+          style={i === 0
+            ? "width: 24px; height: 8px; background: #fff;"
+            : "width: 8px; height: 8px; background: rgba(255,255,255,0.25);"}
+          data-page={i}
+          aria-label={`Page ${i + 1}`}
+        />
+      ))}
+    </div>
+
+    <a
+      href="https://www.google.com/maps/place/K-Side+Hair+Salon"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center gap-2 text-xs font-medium transition-opacity hover:opacity-70"
+      style="color: rgba(255,255,255,0.35); font-family: var(--font-sans);"
+    >
+      See all 439 reviews on Google
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      </svg>
+    </a>
+  </div>
+
+</section>
+
+<style>
+  .testimonials-bg {
+    position: relative;
+    background:
+      radial-gradient(ellipse at 18% 18%, rgba(190, 155, 220, 0.55) 0%, transparent 45%),
+      radial-gradient(ellipse at 55% 35%, rgba(68, 141, 255, 0.65) 0%, transparent 50%),
+      radial-gradient(ellipse at 85% 10%, rgba(68, 100, 255, 0.4) 0%, transparent 40%),
+      radial-gradient(ellipse at 40% 80%, rgba(30, 30, 80, 0.5) 0%, transparent 55%),
+      #07070f;
+  }
+
+  /* Coarse grain layer */
+  .testimonials-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.55;
+    mix-blend-mode: soft-light;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 180px 180px;
+  }
+
+  /* Fine grain overlay on top */
+  .testimonials-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.6;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 140px 140px;
+  }
+
+  .testimonials-bg > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Hide scrollbar on mobile track */
+  #mobile-testimonial-track::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script>
+  // ── Desktop page carousel ──────────────────────────────────
+  const track = document.getElementById('testimonial-track') as HTMLElement;
+  const desktopDots = document.querySelectorAll<HTMLButtonElement>('.testimonial-dot');
+  let currentPage = 0;
+
+  function goToPage(page: number) {
+    currentPage = page;
+    track.style.transform = `translateX(-${page * 100}%)`;
+    desktopDots.forEach((d, i) => {
+      d.style.width = i === page ? '24px' : '8px';
+      d.style.background = i === page ? '#fff' : 'rgba(255,255,255,0.25)';
+    });
+  }
+
+  desktopDots.forEach((dot, i) => {
+    dot.addEventListener('click', () => goToPage(i));
+  });
+
+  // ── Mobile scroll-snap carousel ───────────────────────────
+  const mobileTrack = document.getElementById('mobile-testimonial-track') as HTMLElement;
+  const mobileDots = document.querySelectorAll<HTMLButtonElement>('.mobile-testimonial-dot');
+
+  function setMobileDot(index: number) {
+    mobileDots.forEach((d, i) => {
+      d.style.width = i === index ? '24px' : '8px';
+      d.style.background = i === index ? '#fff' : 'rgba(255,255,255,0.25)';
+    });
+  }
+
+  // Tap on dot → scroll to card
+  mobileDots.forEach((dot, i) => {
+    dot.addEventListener('click', () => {
+      const cards = mobileTrack.querySelectorAll<HTMLElement>('[data-mobile-card]');
+      cards[i]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+    });
+  });
+
+  // Scroll → update active dot
+  let scrollTimer: ReturnType<typeof setTimeout>;
+  mobileTrack?.addEventListener('scroll', () => {
+    clearTimeout(scrollTimer);
+    scrollTimer = setTimeout(() => {
+      const cardWidth = mobileTrack.querySelector<HTMLElement>('[data-mobile-card]')?.offsetWidth ?? 1;
+      const gap = 12; // gap-3 = 12px
+      const index = Math.round(mobileTrack.scrollLeft / (cardWidth + gap));
+      setMobileDot(index);
+    }, 60);
+  }, { passive: true });
+</script>

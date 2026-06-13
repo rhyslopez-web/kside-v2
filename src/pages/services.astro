@@ -1,0 +1,172 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import type { Service } from '../types/database';
+
+let services: Service[] = [];
+try {
+  const { supabase } = await import('../lib/supabase');
+  const { data, error } = await supabase.from('services').select('*').order('category').order('id');
+  if (data && !error) services = data;
+} catch {
+  const raw = await import('../../services-data.json', { with: { type: 'json' } });
+  services = (raw.default as any[]).map((s: any) => ({
+    ...s,
+    created_at: new Date().toISOString(),
+  })) as Service[];
+}
+
+const categories = [...new Set(services.map(s => s.category))];
+const grouped = Object.fromEntries(
+  categories.map(cat => [cat, services.filter(s => s.category === cat)])
+);
+---
+
+<Layout
+  title="Services"
+  description="Browse all K-SIDE Hair Salon services — cuts, perms, colour, treatments, styling, and bridal makeup in Burnaby, BC."
+>
+  <Navbar />
+
+  <!-- Page header -->
+  <div class="pt-32 pb-12 px-4" style="background: var(--color-bg);">
+    <div class="max-w-6xl mx-auto">
+      <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--color-blue); font-family: var(--font-sans);">What We Offer</p>
+      <h1 class="heading-mixed text-5xl sm:text-6xl" style="color: var(--color-ink);">
+        Our <em>Services</em>
+      </h1>
+    </div>
+  </div>
+
+  <!-- Category pills + search -->
+  <div class="sticky top-16 z-40 px-4 py-3" style="background: var(--color-surface); backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-border);">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+      <!-- Pills -->
+      <div class="flex flex-wrap gap-2" id="service-pills">
+        {categories.map((category, i) => (
+          <button
+            data-target={`service-category-${i}`}
+            class="service-pill px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer"
+            style={i === 0
+              ? "background: var(--color-blue); color: #fff; font-family: var(--font-sans); border: 1.5px solid var(--color-blue);"
+              : "background: transparent; color: var(--color-muted); font-family: var(--font-sans); border: 1.5px solid var(--color-border);"}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+      <!-- Search -->
+      <div class="relative flex-shrink-0">
+        <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" style="color: var(--color-muted);">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 115 11a6 6 0 0112 0z" />
+        </svg>
+        <input
+          id="service-search"
+          type="search"
+          placeholder="Search services…"
+          class="pl-9 pr-4 py-1.5 text-sm w-full sm:w-52 outline-none transition-all"
+          style="background: var(--color-surface); border: 1.5px solid var(--color-border); color: var(--color-ink); font-family: var(--font-sans); border-radius: 999px;"
+        />
+      </div>
+    </div>
+  </div>
+
+  <!-- All services -->
+  <section class="py-16 px-4" style="background: var(--color-bg);">
+    <div class="max-w-6xl mx-auto">
+      {categories.map((category, i) => (
+        <div class="mb-20" id={`service-category-${i}`}>
+          <h2 class="text-xl font-semibold mb-8 pb-3 flex items-center gap-3" style="border-bottom: 1px solid var(--color-border); font-family: var(--font-sans); color: var(--color-ink);">
+            <span class="inline-block w-2 h-2 rounded-full flex-shrink-0" style="background: var(--color-blue);"></span>
+            {category}
+          </h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {grouped[category].map((service: Service) => (
+              <div data-service-title={service.title} data-service-category={service.category}>
+                <ServiceCard service={service} />
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<script>
+  const pills = document.querySelectorAll<HTMLButtonElement>('.service-pill');
+
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      const target = document.getElementById(pill.dataset.target!);
+      if (!target) return;
+      const top = target.getBoundingClientRect().top + window.scrollY - 120;
+      window.scrollTo({ top, behavior: 'smooth' });
+      setActive(pill);
+    });
+  });
+
+  function setActive(active: HTMLButtonElement) {
+    pills.forEach(p => {
+      p.style.background = 'transparent';
+      p.style.color = 'var(--color-muted)';
+      p.style.borderColor = 'var(--color-border)';
+    });
+    active.style.background = 'var(--color-blue)';
+    active.style.color = '#fff';
+    active.style.borderColor = 'var(--color-blue)';
+  }
+
+  const sections = document.querySelectorAll<HTMLElement>('[id^="service-category-"]');
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const idx = entry.target.id.replace('service-category-', '');
+          pills.forEach((p, i) => {
+            const active = String(i) === idx;
+            p.style.background = active ? 'var(--color-blue)' : 'transparent';
+            p.style.color = active ? '#fff' : 'var(--color-muted)';
+            p.style.borderColor = active ? 'var(--color-blue)' : 'var(--color-border)';
+          });
+        }
+      });
+    },
+    { rootMargin: '-20% 0px -70% 0px' }
+  );
+  sections.forEach(s => observer.observe(s));
+
+  // ── Search filter ──────────────────────────────────────────────
+  const searchInput = document.getElementById('service-search') as HTMLInputElement;
+  const allCards = document.querySelectorAll<HTMLElement>('[data-service-title]');
+  const categoryBlocks = document.querySelectorAll<HTMLElement>('[id^="service-category-"]');
+
+  searchInput?.addEventListener('input', () => {
+    const q = searchInput.value.trim().toLowerCase();
+
+    if (!q) {
+      // Reset: show everything
+      allCards.forEach(c => c.style.display = '');
+      categoryBlocks.forEach(b => b.style.display = '');
+      return;
+    }
+
+    // Hide pills & show all category blocks while filtering
+    categoryBlocks.forEach(block => {
+      const cards = block.querySelectorAll<HTMLElement>('[data-service-title]');
+      let anyVisible = false;
+      cards.forEach(card => {
+        const title = card.dataset.serviceTitle!.toLowerCase();
+        const cat = card.dataset.serviceCategory!.toLowerCase();
+        const match = title.includes(q) || cat.includes(q);
+        card.style.display = match ? '' : 'none';
+        if (match) anyVisible = true;
+      });
+      block.style.display = anyVisible ? '' : 'none';
+    });
+  });
+</script>
