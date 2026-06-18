@@ -25,12 +25,10 @@ const fullTitle = title === 'K-SIDE' ? 'K-SIDE Hair Salon' : `${title} | K-SIDE 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- SEO -->
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalUrl} />
 
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
@@ -38,26 +36,18 @@ const fullTitle = title === 'K-SIDE' ? 'K-SIDE Hair Salon' : `${title} | K-SIDE 
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:site_name" content="K-SIDE Hair Salon" />
 
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={image} />
 
-    <!-- Apply saved theme before paint to prevent flash -->
-    <script is:inline>
-      const t = localStorage.getItem('theme');
-      if (t === 'dark') document.documentElement.dataset.theme = 'dark';
-    </script>
-
-    <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
-    <!-- Fonts -->
+    <!-- Inter as BaseGrotesk substitute -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
   </head>

@@ -8,86 +8,49 @@ const navLinks = [
 ];
 ---
 
-<header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-transparent" style="background: transparent;">
-  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
+<header id="site-header" style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: transparent; transition: background 0.3s ease;">
+  <nav style="max-width: 1400px; margin: 0 auto; padding: 0 40px; height: 70px; display: flex; align-items: center; justify-content: space-between;">
 
-    <!-- Logo -->
-    <a href="/" class="flex items-baseline gap-1.5 select-none">
-      <span id="nav-logo-text" class="transition-colors duration-300" style="font-family: var(--font-sans); font-weight: 700; font-size: 1.15rem; letter-spacing: 0.18em; color: #fff;">K-SIDE</span>
-      <span style="font-family: var(--font-serif); font-style: italic; font-weight: 300; font-size: 0.8rem; color: var(--color-blue); letter-spacing: 0.04em;">hair salon</span>
-    </a>
+    <!-- Left: site title + nav links -->
+    <div style="display: flex; align-items: center; gap: 30px;">
+      <a href="/" style="display: flex; align-items: center; text-decoration: none; flex-shrink: 0;">
+        <img id="nav-logo" src="/images/logo.png" alt="K-SIDE Hair Salon" style="height: 36px; width: auto; filter: brightness(0) invert(1); transition: filter 0.3s ease;" />
+      </a>
+      <ul style="display: flex; gap: 25px; list-style: none; margin: 0; padding: 0;" class="desktop-nav">
+        {navLinks.map(link => (
+          <li>
+            <a
+              href={link.href}
+              class="nav-link"
+              style="font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.7); text-decoration: none; letter-spacing: 0.01em; font-family: var(--font-basegrotesk); transition: color 0.3s ease, opacity 0.15s ease;"
+              onmouseover="this.style.opacity='1'"
+              onmouseout="this.style.opacity='0.8'"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
 
-    <!-- Desktop nav -->
-    <ul class="hidden md:flex items-center gap-8">
-      {navLinks.map(link => (
-        <li>
-          <a
-            href={link.href}
-            class="nav-link transition-colors duration-300 tracking-wide"
-            style="font-family: var(--font-sans); font-size: 0.875rem; font-weight: 500; color: rgba(255,255,255,0.8);"
-          >
-            {link.label}
-          </a>
-        </li>
-      ))}
-    </ul>
-
-    <div class="hidden md:flex items-center gap-3">
-      <!-- Dark mode toggle -->
-      <button
-        id="theme-toggle"
-        aria-label="Toggle dark mode"
-        class="p-2 rounded-full transition-colors duration-200 hover:opacity-70"
-        style="color: #fff;"
-      >
-        <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
-        </svg>
-        <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-        </svg>
-      </button>
-
-      <!-- Desktop CTA -->
+    <!-- Right: Book Now pill -->
+    <div style="display: flex; align-items: center; gap: 20px;">
       <a
         href="https://book.squareup.com/appointments/oj8bsw2ayc6yto/location/LE021WER1QN40/services"
         target="_blank"
         rel="noopener noreferrer"
-        class="btn-primary inline-flex items-center gap-2 px-5 py-2 rounded-full text-sm font-medium text-white"
-        style="font-family: var(--font-sans);"
+        class="btn-primary"
+        style="font-size: 14px;"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-        </svg>
         Book Now
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
       </a>
-    </div>
-
-    <!-- Mobile: theme toggle + hamburger -->
-    <div class="md:hidden flex items-center gap-1">
-      <button
-        id="mobile-theme-toggle"
-        aria-label="Toggle dark mode"
-        class="p-2 transition-colors duration-300"
-        style="color: #fff;"
-      >
-        <svg id="mobile-icon-sun" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
-        </svg>
-        <svg id="mobile-icon-moon" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-        </svg>
-      </button>
-      <button
-        id="mobile-menu-btn"
-        aria-label="Open menu"
-        class="p-2 transition-colors duration-300"
-        style="color: #fff;"
-      >
-        <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <!-- Mobile hamburger -->
+      <button id="mobile-menu-btn" aria-label="Open menu" style="display: none; background: none; border: none; cursor: pointer; padding: 4px; color: #fff; transition: color 0.3s ease;" class="mobile-only">
+        <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
-        <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display:none;">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
@@ -95,141 +58,92 @@ const navLinks = [
   </nav>
 </header>
 
-<!-- Mobile full-screen drawer (slides from right) -->
+<!-- Mobile drawer -->
 <div
   id="mobile-menu"
-  class="md:hidden fixed inset-0 z-40 flex flex-col"
-  style="background: var(--color-surface); transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);"
-  aria-hidden="true"
+  style="display: none; position: fixed; inset: 0; top: 57px; background: #fff; z-index: 40; border-top: 1px solid #000; flex-direction: column;"
 >
-  <!-- Top bar spacer (aligns with navbar height) -->
-  <div class="h-16 flex-shrink-0"></div>
-
-  <!-- Centered nav links -->
-  <div class="flex-1 flex flex-col items-center justify-center gap-2">
+  <div style="padding: 40px; display: flex; flex-direction: column; gap: 0;">
     {navLinks.map(link => (
       <a
         href={link.href}
-        class="mobile-nav-link w-full text-center py-4 text-2xl font-medium tracking-wide transition-opacity hover:opacity-60"
-        style="color: var(--color-ink); font-family: var(--font-sans);"
+        class="mobile-nav-link"
+        style="font-size: 30px; font-weight: 300; color: #000; text-decoration: none; padding: 16px 0; border-bottom: 1px solid #000; letter-spacing: 0.01em; font-family: var(--font-basegrotesk);"
       >
         {link.label}
       </a>
     ))}
-  </div>
-
-  <!-- Book Now CTA at bottom -->
-  <div class="px-6 pb-12 flex-shrink-0">
-    <a
-      href="https://book.squareup.com/appointments/oj8bsw2ayc6yto/location/LE021WER1QN40/services"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="btn-primary flex items-center justify-center gap-2.5 w-full py-4 text-white text-base font-medium rounded-full"
-      style="font-family: var(--font-sans);"
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-      </svg>
-      Book Now
-    </a>
+    <div style="padding-top: 32px;">
+      <a
+        href="https://book.squareup.com/appointments/oj8bsw2ayc6yto/location/LE021WER1QN40/services"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary"
+        style="font-size: 16px; justify-content: center; width: 100%; box-sizing: border-box;"
+      >
+        Book an Appointment
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
   </div>
 </div>
 
+<style>
+  @media (max-width: 767px) {
+    .desktop-nav { display: none !important; }
+    .mobile-only { display: block !important; }
+  }
+</style>
+
 <script>
+  // ── Transparent → solid on scroll ──────────────────────────
+  const header = document.getElementById('site-header') as HTMLElement;
+  const logo = document.getElementById('nav-logo') as HTMLImageElement;
+  const navLinks = document.querySelectorAll<HTMLElement>('.nav-link');
+  const menuBtn2 = document.getElementById('mobile-menu-btn') as HTMLElement;
+
+  function setScrolled(scrolled: boolean) {
+    if (scrolled) {
+      header.style.background = '#fff';
+      if (logo) logo.style.filter = 'brightness(0)';
+      navLinks.forEach(l => { l.style.color = 'rgba(0,0,0,0.6)'; });
+      if (menuBtn2) menuBtn2.style.color = '#000';
+    } else {
+      header.style.background = 'transparent';
+      if (logo) logo.style.filter = 'brightness(0) invert(1)';
+      navLinks.forEach(l => { l.style.color = 'rgba(255,255,255,0.7)'; });
+      if (menuBtn2) menuBtn2.style.color = '#fff';
+    }
+  }
+
+  setScrolled(window.scrollY > 10);
+  window.addEventListener('scroll', () => setScrolled(window.scrollY > 10), { passive: true });
+
+  // ── Mobile menu ─────────────────────────────────────────────
   const menuBtn = document.getElementById('mobile-menu-btn') as HTMLButtonElement;
   const menu = document.getElementById('mobile-menu') as HTMLElement;
-  const hamburgerIcon = document.getElementById('hamburger-icon') as HTMLElement;
-  const closeIcon = document.getElementById('close-icon') as HTMLElement;
-  const mobileNavLinks = document.querySelectorAll<HTMLElement>('.mobile-nav-link');
+  const hamburger = document.getElementById('hamburger-icon') as HTMLElement;
+  const close = document.getElementById('close-icon') as HTMLElement;
+  const mobileLinks = document.querySelectorAll<HTMLElement>('.mobile-nav-link');
 
-  let menuOpen = false;
+  let open = false;
 
   function openMenu() {
-    menuOpen = true;
-    menu.style.transform = 'translateX(0)';
-    menu.setAttribute('aria-hidden', 'false');
-    hamburgerIcon.classList.add('hidden');
-    closeIcon.classList.remove('hidden');
+    open = true;
+    menu.style.display = 'flex';
+    hamburger.style.display = 'none';
+    close.style.display = 'block';
     document.body.style.overflow = 'hidden';
   }
 
   function closeMenu() {
-    menuOpen = false;
-    menu.style.transform = 'translateX(100%)';
-    menu.setAttribute('aria-hidden', 'true');
-    hamburgerIcon.classList.remove('hidden');
-    closeIcon.classList.add('hidden');
+    open = false;
+    menu.style.display = 'none';
+    hamburger.style.display = 'block';
+    close.style.display = 'none';
     document.body.style.overflow = '';
   }
 
-  menuBtn?.addEventListener('click', () => menuOpen ? closeMenu() : openMenu());
-
-  // Close when a nav link is tapped
-  mobileNavLinks.forEach(link => link.addEventListener('click', closeMenu));
-
-  // ── Theme toggle (desktop) ───────────────────────────────────
-  const html = document.documentElement;
-  const themeToggle = document.getElementById('theme-toggle') as HTMLButtonElement;
-  const iconSun = document.getElementById('icon-sun') as HTMLElement;
-  const iconMoon = document.getElementById('icon-moon') as HTMLElement;
-
-  // Mobile theme toggle
-  const mobileThemeToggle = document.getElementById('mobile-theme-toggle') as HTMLButtonElement;
-  const mobileIconSun = document.getElementById('mobile-icon-sun') as HTMLElement;
-  const mobileIconMoon = document.getElementById('mobile-icon-moon') as HTMLElement;
-
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'dark') html.dataset.theme = 'dark';
-
-  function isDark() { return html.dataset.theme === 'dark'; }
-
-  function updateIcons() {
-    iconSun.classList.toggle('hidden', !isDark());
-    iconMoon.classList.toggle('hidden', isDark());
-    mobileIconSun.classList.toggle('hidden', !isDark());
-    mobileIconMoon.classList.toggle('hidden', isDark());
-  }
-  updateIcons();
-
-  function toggleTheme() {
-    const dark = !isDark();
-    html.dataset.theme = dark ? 'dark' : '';
-    localStorage.setItem('theme', dark ? 'dark' : 'light');
-    updateIcons();
-    setScrolled(window.scrollY > 20);
-  }
-
-  themeToggle?.addEventListener('click', toggleTheme);
-  mobileThemeToggle?.addEventListener('click', toggleTheme);
-
-  // ── Transparent-to-solid on scroll ──────────────────────────
-  const header = document.getElementById('site-header') as HTMLElement;
-  const logoText = document.getElementById('nav-logo-text') as HTMLElement;
-  const navLinks = document.querySelectorAll<HTMLElement>('.nav-link');
-
-  function setScrolled(scrolled: boolean) {
-    const dark = isDark();
-    if (scrolled) {
-      header.style.background = dark ? 'rgba(13,13,18,0.92)' : 'rgba(255,255,255,0.92)';
-      header.style.backdropFilter = 'blur(12px)';
-      header.style.borderBottomColor = 'var(--color-border)';
-      if (logoText) logoText.style.color = 'var(--color-ink)';
-      navLinks.forEach(l => l.style.color = 'var(--color-muted)');
-      if (menuBtn) menuBtn.style.color = 'var(--color-ink)';
-      if (themeToggle) themeToggle.style.color = 'var(--color-ink)';
-      if (mobileThemeToggle) mobileThemeToggle.style.color = 'var(--color-ink)';
-    } else {
-      header.style.background = 'transparent';
-      header.style.backdropFilter = 'none';
-      header.style.borderBottomColor = 'transparent';
-      if (logoText) logoText.style.color = '#fff';
-      navLinks.forEach(l => l.style.color = 'rgba(255,255,255,0.8)');
-      if (menuBtn) menuBtn.style.color = '#fff';
-      if (themeToggle) themeToggle.style.color = '#fff';
-      if (mobileThemeToggle) mobileThemeToggle.style.color = '#fff';
-    }
-  }
-
-  setScrolled(window.scrollY > 20);
-  window.addEventListener('scroll', () => setScrolled(window.scrollY > 20), { passive: true });
+  menuBtn?.addEventListener('click', () => open ? closeMenu() : openMenu());
+  mobileLinks.forEach(l => l.addEventListener('click', closeMenu));
 </script>

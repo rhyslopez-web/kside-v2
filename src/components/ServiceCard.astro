@@ -10,29 +10,8 @@ const { service } = Astro.props;
 
 <article class="rounded-2xl overflow-hidden flex flex-col transition-shadow duration-300 hover:shadow-lg" style="background: var(--color-surface); border: 1px solid var(--color-border);">
 
-  <!-- Image -->
-  {service.image_url ? (
-    <div class="aspect-[4/3] overflow-hidden">
-      <img
-        src={service.image_url}
-        alt={service.title}
-        class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-        loading="lazy"
-      />
-    </div>
-  ) : (
-    <div class="aspect-[4/3] flex items-center justify-center" style="background: var(--color-blue-tint);">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="color: var(--color-blue); opacity: 0.4;">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-      </svg>
-    </div>
-  )}
-
   <!-- Content -->
   <div class="p-5 flex flex-col flex-grow">
-    <p class="text-xs font-semibold uppercase tracking-widest mb-1" style="color: var(--color-blue); font-family: var(--font-sans);">
-      {service.category}
-    </p>
     <h3 class="mb-2 leading-snug" style="font-family: var(--font-serif); font-size: 1.2rem; font-weight: 600; color: var(--color-ink);">
       {service.title}
     </h3>
@@ -56,7 +35,7 @@ const { service } = Astro.props;
         href="https://book.squareup.com/appointments/oj8bsw2ayc6yto/location/LE021WER1QN40/services"
         target="_blank"
         rel="noopener noreferrer"
-        class="btn-primary text-xs font-medium px-3.5 py-1.5 rounded-full text-white"
+        class="btn-primary text-xs font-medium px-3.5 py-1.5 rounded-full"
         style="font-family: var(--font-sans);"
       >
         Book

@@ -2,7 +2,6 @@
 import Layout from '../layouts/Layout.astro';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
-import ServiceCard from '../components/ServiceCard.astro';
 import type { Service } from '../types/database';
 
 let services: Service[] = [];
@@ -30,62 +29,91 @@ const grouped = Object.fromEntries(
 >
   <Navbar />
 
-  <!-- Page header -->
-  <div class="pt-32 pb-12 px-4" style="background: var(--color-bg);">
-    <div class="max-w-6xl mx-auto">
-      <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color: var(--color-blue); font-family: var(--font-sans);">What We Offer</p>
-      <h1 class="heading-mixed text-5xl sm:text-6xl" style="color: var(--color-ink);">
-        Our <em>Services</em>
-      </h1>
+  <!-- Page header — black band -->
+  <div style="background: #000; padding: 65px 40px 50px; box-sizing: border-box;">
+    <div style="max-width: 1400px; margin: 0 auto;">
+      <p style="font-size: 12px; font-weight: 400; color: #FEBF00; letter-spacing: 0.01em; text-transform: uppercase; margin: 0 0 16px; font-family: var(--font-basegrotesk);">What We Offer</p>
+      <h1 style="font-size: clamp(40px, 6vw, 65px); font-weight: 300; color: #fff; line-height: 1.15; letter-spacing: 0.01em; margin: 0; font-family: var(--font-basegrotesk);">Services</h1>
     </div>
   </div>
 
-  <!-- Category pills + search -->
-  <div class="sticky top-16 z-40 px-4 py-3" style="background: var(--color-surface); backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-border);">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
-      <!-- Pills -->
-      <div class="flex flex-wrap gap-2" id="service-pills">
+  <!-- Sticky category nav -->
+  <div id="category-nav" style="position: sticky; top: 0; z-index: 40; background: #fff; border-bottom: 1px solid #000; box-sizing: border-box;">
+    <div style="max-width: 1400px; margin: 0 auto; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 52px; overflow-x: auto;">
+      <div style="display: flex; align-items: center; gap: 0; flex-shrink: 0;">
         {categories.map((category, i) => (
           <button
             data-target={`service-category-${i}`}
-            class="service-pill px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer"
-            style={i === 0
-              ? "background: var(--color-blue); color: #fff; font-family: var(--font-sans); border: 1.5px solid var(--color-blue);"
-              : "background: transparent; color: var(--color-muted); font-family: var(--font-sans); border: 1.5px solid var(--color-border);"}
+            class="service-pill"
+            style="background: none; border: none; border-right: 1px solid #000; cursor: pointer; padding: 0 20px; height: 52px; font-size: 13px; font-weight: 400; color: #ababab; letter-spacing: 0.01em; font-family: var(--font-basegrotesk); white-space: nowrap; transition: color 0.15s, background 0.15s;"
           >
             {category}
           </button>
         ))}
       </div>
       <!-- Search -->
-      <div class="relative flex-shrink-0">
-        <svg xmlns="http://www.w3.org/2000/svg" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" style="color: var(--color-muted);">
+      <div style="position: relative; flex-shrink: 0;">
+        <svg xmlns="http://www.w3.org/2000/svg" style="position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; pointer-events: none; color: #ababab;" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
           <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11A6 6 0 115 11a6 6 0 0112 0z" />
         </svg>
         <input
           id="service-search"
           type="search"
-          placeholder="Search services…"
-          class="pl-9 pr-4 py-1.5 text-sm w-full sm:w-52 outline-none transition-all"
-          style="background: var(--color-surface); border: 1.5px solid var(--color-border); color: var(--color-ink); font-family: var(--font-sans); border-radius: 999px;"
+          placeholder="Search…"
+          style="padding: 6px 14px 6px 34px; font-size: 13px; font-weight: 300; font-family: var(--font-basegrotesk); letter-spacing: 0.01em; color: #000; background: #fff; border: 1px solid #000; border-radius: 54px; outline: none; width: 160px;"
         />
       </div>
     </div>
   </div>
 
-  <!-- All services -->
-  <section class="py-16 px-4" style="background: var(--color-bg);">
-    <div class="max-w-6xl mx-auto">
+  <!-- Services list -->
+  <section style="background: #fff; width: 100%;">
+    <div style="max-width: 1400px; margin: 0 auto; padding: 0 40px; box-sizing: border-box;">
       {categories.map((category, i) => (
-        <div class="mb-20" id={`service-category-${i}`}>
-          <h2 class="text-xl font-semibold mb-8 pb-3 flex items-center gap-3" style="border-bottom: 1px solid var(--color-border); font-family: var(--font-sans); color: var(--color-ink);">
-            <span class="inline-block w-2 h-2 rounded-full flex-shrink-0" style="background: var(--color-blue);"></span>
-            {category}
-          </h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div id={`service-category-${i}`} style="padding: 60px 0; border-bottom: 1px solid #000;">
+          <!-- Category heading -->
+          <div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 40px;">
+            <div style="display: flex; align-items: baseline; gap: 16px;">
+              <span style="font-size: 12px; font-weight: 400; color: #FEBF00; letter-spacing: 0.01em; font-family: var(--font-basegrotesk);">0{i + 1}</span>
+              <h2 style="font-size: 32px; font-weight: 300; color: #000; line-height: 1.2; letter-spacing: 0.01em; margin: 0; font-family: var(--font-basegrotesk);">{category}</h2>
+            </div>
+            <span style="font-size: 12px; font-weight: 300; color: #ababab; letter-spacing: 0.01em; font-family: var(--font-basegrotesk);">{grouped[category].length} {grouped[category].length === 1 ? 'service' : 'services'}</span>
+          </div>
+
+          <!-- Service rows -->
+          <div style="border-top: 1px solid #e0e0e0;">
             {grouped[category].map((service: Service) => (
-              <div data-service-title={service.title} data-service-category={service.category}>
-                <ServiceCard service={service} />
+              <div
+                data-service-title={service.title}
+                data-service-category={service.category}
+                style="display: flex; align-items: baseline; justify-content: space-between; gap: 40px; padding: 28px 0; border-bottom: 1px solid #e0e0e0;"
+              >
+                <div style="flex: 1; min-width: 0;">
+                  <h3 style="font-size: 18px; font-weight: 400; color: #000; line-height: 1.3; letter-spacing: 0.01em; margin: 0 0 8px; font-family: var(--font-basegrotesk);">{service.title}</h3>
+                  {service.description && (
+                    <p style="font-size: 14px; font-weight: 300; color: #ababab; line-height: 1.5; letter-spacing: 0.01em; margin: 0; font-family: var(--font-basegrotesk);">{service.description}</p>
+                  )}
+                </div>
+                <div style="display: flex; align-items: center; gap: 30px; flex-shrink: 0;">
+                  <div style="text-align: right;">
+                    <p style="font-size: 16px; font-weight: 400; color: #000; letter-spacing: 0.01em; margin: 0; font-family: var(--font-basegrotesk);">
+                      {service.price_varies ? 'Price varies' : (service.price ?? 'Contact us')}
+                    </p>
+                    {service.duration && (
+                      <p style="font-size: 12px; font-weight: 300; color: #ababab; letter-spacing: 0.01em; margin: 4px 0 0; font-family: var(--font-basegrotesk);">{service.duration}</p>
+                    )}
+                  </div>
+                  <a
+                    href="https://book.squareup.com/appointments/oj8bsw2ayc6yto/location/LE021WER1QN40/services"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="btn-primary"
+                    style="font-size: 13px; padding: 7px 18px; white-space: nowrap;"
+                  >
+                    Book
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                  </a>
+                </div>
               </div>
             ))}
           </div>
@@ -100,27 +128,28 @@ const grouped = Object.fromEntries(
 <script>
   const pills = document.querySelectorAll<HTMLButtonElement>('.service-pill');
 
+  function setActive(active: HTMLButtonElement) {
+    pills.forEach(p => {
+      p.style.color = '#ababab';
+      p.style.background = 'none';
+      p.style.fontWeight = '400';
+    });
+    active.style.color = '#000';
+    active.style.background = 'none';
+    active.style.fontWeight = '500';
+  }
+
   pills.forEach(pill => {
     pill.addEventListener('click', () => {
       const target = document.getElementById(pill.dataset.target!);
       if (!target) return;
-      const top = target.getBoundingClientRect().top + window.scrollY - 120;
+      const top = target.getBoundingClientRect().top + window.scrollY - 80;
       window.scrollTo({ top, behavior: 'smooth' });
       setActive(pill);
     });
   });
 
-  function setActive(active: HTMLButtonElement) {
-    pills.forEach(p => {
-      p.style.background = 'transparent';
-      p.style.color = 'var(--color-muted)';
-      p.style.borderColor = 'var(--color-border)';
-    });
-    active.style.background = 'var(--color-blue)';
-    active.style.color = '#fff';
-    active.style.borderColor = 'var(--color-blue)';
-  }
-
+  // Highlight active pill on scroll
   const sections = document.querySelectorAll<HTMLElement>('[id^="service-category-"]');
   const observer = new IntersectionObserver(
     entries => {
@@ -129,9 +158,8 @@ const grouped = Object.fromEntries(
           const idx = entry.target.id.replace('service-category-', '');
           pills.forEach((p, i) => {
             const active = String(i) === idx;
-            p.style.background = active ? 'var(--color-blue)' : 'transparent';
-            p.style.color = active ? '#fff' : 'var(--color-muted)';
-            p.style.borderColor = active ? 'var(--color-blue)' : 'var(--color-border)';
+            p.style.color = active ? '#000' : '#ababab';
+            p.style.fontWeight = active ? '500' : '400';
           });
         }
       });
@@ -140,33 +168,38 @@ const grouped = Object.fromEntries(
   );
   sections.forEach(s => observer.observe(s));
 
-  // ── Search filter ──────────────────────────────────────────────
+  // Search filter
   const searchInput = document.getElementById('service-search') as HTMLInputElement;
   const allCards = document.querySelectorAll<HTMLElement>('[data-service-title]');
   const categoryBlocks = document.querySelectorAll<HTMLElement>('[id^="service-category-"]');
 
   searchInput?.addEventListener('input', () => {
     const q = searchInput.value.trim().toLowerCase();
-
     if (!q) {
-      // Reset: show everything
-      allCards.forEach(c => c.style.display = '');
-      categoryBlocks.forEach(b => b.style.display = '');
+      allCards.forEach(c => (c.style.display = ''));
+      categoryBlocks.forEach(b => (b.style.display = ''));
       return;
     }
-
-    // Hide pills & show all category blocks while filtering
     categoryBlocks.forEach(block => {
       const cards = block.querySelectorAll<HTMLElement>('[data-service-title]');
-      let anyVisible = false;
+      let any = false;
       cards.forEach(card => {
-        const title = card.dataset.serviceTitle!.toLowerCase();
-        const cat = card.dataset.serviceCategory!.toLowerCase();
+        const title = (card.dataset.serviceTitle ?? '').toLowerCase();
+        const cat = (card.dataset.serviceCategory ?? '').toLowerCase();
         const match = title.includes(q) || cat.includes(q);
         card.style.display = match ? '' : 'none';
-        if (match) anyVisible = true;
+        if (match) any = true;
       });
-      block.style.display = anyVisible ? '' : 'none';
+      block.style.display = any ? '' : 'none';
     });
   });
 </script>
+
+<style>
+  @media (max-width: 767px) {
+    #category-nav > div { height: auto; padding: 12px 20px; flex-direction: column; align-items: flex-start; }
+    #category-nav > div > div:first-child { flex-wrap: wrap; gap: 4px; }
+    .service-pill { border-right: none !important; padding: 6px 14px !important; height: auto !important; border: 1px solid #000 !important; border-radius: 54px !important; }
+    [id^="service-category-"] > div:last-child > div { flex-direction: column; align-items: flex-start !important; gap: 16px !important; }
+  }
+</style>

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+  <!-- K-SIDE wordmark -->
+  <text
+    x="250" y="148"
+    font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif"
+    font-weight="900"
+    font-size="104"
+    letter-spacing="3"
+    text-anchor="middle"
+    fill="#0E0E0E"
+  >K-SIDE</text>
+
+  <!-- HAIR SALON subtitle -->
+  <text
+    x="252" y="192"
+    font-family="'Arial Black', 'Helvetica Neue', Arial, sans-serif"
+    font-weight="700"
+    font-size="29"
+    letter-spacing="9"
+    text-anchor="middle"
+    fill="#0E0E0E"
+  >HAIR SALON</text>
+
+  <!-- Comb spine — convex arch top, flat bottom -->
+  <path
+    d="M 50,310 C 50,292 56,276 73,268 Q 161,250 250,246 Q 339,250 427,268 C 444,276 450,292 450,310 Z"
+    fill="#0E0E0E"
+  />
+
+  <!-- Comb teeth — 45 teeth, 4px wide, 9px step, y=310–445 -->
+  <rect x="50"  y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="59"  y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="68"  y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="77"  y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="86"  y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="95"  y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="104" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="113" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="122" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="131" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="140" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="149" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="158" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="167" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="176" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="185" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="194" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="203" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="212" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="221" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="230" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="239" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="248" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="257" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="266" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="275" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="284" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="293" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="302" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="311" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="320" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="329" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="338" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="347" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="356" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="365" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="374" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="383" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="392" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="401" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="410" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="419" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="428" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="437" y="310" width="4" height="135" fill="#0E0E0E"/>
+  <rect x="446" y="310" width="4" height="135" fill="#0E0E0E"/>
+</svg>
