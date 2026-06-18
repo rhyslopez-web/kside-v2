@@ -11,46 +11,43 @@ const navLinks = [
 <header id="site-header" style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; background: transparent; transition: background 0.3s ease;">
   <nav style="max-width: 1400px; margin: 0 auto; padding: 0 40px; height: 70px; display: flex; align-items: center; justify-content: space-between;">
 
-    <!-- Left: site title + nav links -->
-    <div style="display: flex; align-items: center; gap: 30px;">
-      <a href="/" style="display: flex; align-items: center; text-decoration: none; flex-shrink: 0;">
-        <img id="nav-logo" src="/images/logo.png" alt="K-SIDE Hair Salon" style="height: 36px; width: auto; filter: brightness(0) invert(1); transition: filter 0.3s ease;" />
-      </a>
-      <ul style="display: flex; gap: 25px; list-style: none; margin: 0; padding: 0;" class="desktop-nav">
-        {navLinks.map(link => (
-          <li>
-            <a
-              href={link.href}
-              class="nav-link"
-              style="font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.7); text-decoration: none; letter-spacing: 0.01em; font-family: var(--font-basegrotesk); transition: color 0.3s ease, opacity 0.15s ease;"
-              onmouseover="this.style.opacity='1'"
-              onmouseout="this.style.opacity='0.8'"
-            >
-              {link.label}
-            </a>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <!-- Logo -->
+    <a href="/" style="display: flex; align-items: center; text-decoration: none; flex-shrink: 0;">
+      <img id="nav-logo" src="/images/logo.png" alt="K-SIDE Hair Salon" style="height: 36px; width: auto; filter: brightness(0) invert(1); transition: filter 0.3s ease;" />
+    </a>
 
-    <!-- Right: Book Now pill -->
+    <!-- Desktop nav links -->
+    <ul style="display: flex; gap: 25px; list-style: none; margin: 0; padding: 0;" class="desktop-nav">
+      {navLinks.map(link => (
+        <li>
+          <a
+            href={link.href}
+            class="nav-link"
+            style="font-size: 14px; font-weight: 400; color: rgba(255,255,255,0.7); text-decoration: none; letter-spacing: 0.01em; font-family: var(--font-basegrotesk); transition: color 0.3s ease;"
+          >
+            {link.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Desktop Book Now + mobile hamburger -->
     <div style="display: flex; align-items: center; gap: 20px;">
       <a
         href="https://book.squareup.com/appointments/oj8bsw2ayc6yto/location/LE021WER1QN40/services"
         target="_blank"
         rel="noopener noreferrer"
-        class="btn-primary"
+        class="btn-primary desktop-book"
         style="font-size: 14px;"
       >
         Book Now
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
       </a>
-      <!-- Mobile hamburger -->
-      <button id="mobile-menu-btn" aria-label="Open menu" style="display: none; background: none; border: none; cursor: pointer; padding: 4px; color: #fff; transition: color 0.3s ease;" class="mobile-only">
-        <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <button id="mobile-menu-btn" aria-label="Open menu" class="mobile-only" style="display: none; background: none; border: none; cursor: pointer; padding: 4px; color: #fff; transition: color 0.3s ease;">
+        <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
-        <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display:none;">
+        <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display:none;">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
@@ -58,40 +55,53 @@ const navLinks = [
   </nav>
 </header>
 
-<!-- Mobile drawer -->
+<!-- Mobile full-screen drawer — covers entire viewport -->
 <div
   id="mobile-menu"
-  style="display: none; position: fixed; inset: 0; top: 57px; background: #fff; z-index: 40; border-top: 1px solid #000; flex-direction: column;"
+  style="display: none; position: fixed; inset: 0; z-index: 49; background: #fff; flex-direction: column; justify-content: space-between; padding: 100px 32px 48px;"
 >
-  <div style="padding: 40px; display: flex; flex-direction: column; gap: 0;">
+  <!-- Nav links -->
+  <div style="display: flex; flex-direction: column;">
     {navLinks.map(link => (
       <a
         href={link.href}
         class="mobile-nav-link"
-        style="font-size: 30px; font-weight: 300; color: #000; text-decoration: none; padding: 16px 0; border-bottom: 1px solid #000; letter-spacing: 0.01em; font-family: var(--font-basegrotesk);"
+        style="font-size: 36px; font-weight: 300; color: #000; text-decoration: none; padding: 18px 0; border-bottom: 1px solid #000; letter-spacing: 0.01em; font-family: var(--font-basegrotesk);"
       >
         {link.label}
       </a>
     ))}
-    <div style="padding-top: 32px;">
-      <a
-        href="https://book.squareup.com/appointments/oj8bsw2ayc6yto/location/LE021WER1QN40/services"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn-primary"
-        style="font-size: 16px; justify-content: center; width: 100%; box-sizing: border-box;"
-      >
-        Book an Appointment
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
-      </a>
-    </div>
   </div>
+
+  <!-- Book Now pinned to bottom -->
+  <a
+    href="https://book.squareup.com/appointments/oj8bsw2ayc6yto/location/LE021WER1QN40/services"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="btn-primary"
+    style="font-size: 16px; justify-content: center; width: 100%; box-sizing: border-box;"
+  >
+    Book an Appointment
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+  </a>
 </div>
 
 <style>
   @media (max-width: 767px) {
     .desktop-nav { display: none !important; }
+    .desktop-book { display: none !important; }
     .mobile-only { display: block !important; }
+  }
+
+  /* Reduce section X padding on mobile globally */
+  @media (max-width: 767px) {
+    [style*=" 40px"],
+    [style*=":40px"],
+    [style*="padding-left: 40px"],
+    [style*="padding-right: 40px"] {
+      padding-left: 5px !important;
+      padding-right: 5px !important;
+    }
   }
 </style>
 
