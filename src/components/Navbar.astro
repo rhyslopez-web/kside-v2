@@ -4,7 +4,7 @@ const navLinks = [
   { label: 'About', href: '/#about' },
   { label: 'Gallery', href: '/#gallery' },
   { label: 'Reviews', href: '/#testimonials' },
-  { label: 'Contact', href: '/#contact' },
+  { label: 'Contact', href: '/contact' },
 ];
 ---
 
@@ -93,14 +93,14 @@ const navLinks = [
     .mobile-only { display: block !important; }
   }
 
-  /* Reduce section X padding on mobile globally */
+  /* Consistent 20px horizontal padding on mobile for all sections and navbar */
   @media (max-width: 767px) {
     [style*=" 40px"],
     [style*=":40px"],
     [style*="padding-left: 40px"],
     [style*="padding-right: 40px"] {
-      padding-left: 5px !important;
-      padding-right: 5px !important;
+      padding-left: 20px !important;
+      padding-right: 20px !important;
     }
   }
 </style>
@@ -143,6 +143,8 @@ const navLinks = [
     menu.style.transform = 'translateX(0)';
     hamburger.style.display = 'none';
     close.style.display = 'block';
+    // Always show X in black — drawer background is white
+    if (menuBtn2) menuBtn2.style.color = '#000';
     document.body.style.overflow = 'hidden';
   }
 
@@ -152,6 +154,8 @@ const navLinks = [
     hamburger.style.display = 'block';
     close.style.display = 'none';
     document.body.style.overflow = '';
+    // Restore correct colour based on scroll position
+    setScrolled(window.scrollY > 10);
   }
 
   menuBtn?.addEventListener('click', () => open ? closeMenu() : openMenu());

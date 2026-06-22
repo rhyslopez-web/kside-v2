@@ -1,0 +1,223 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout
+  title="Contact — K-SIDE Hair Salon"
+  description="Get in touch with K-SIDE Hair Salon in Burnaby, BC. Send us a message or find us at 6968 Royal Oak Ave #102."
+>
+  <Navbar />
+
+  <!-- Page header -->
+  <div style="background: #000; padding: 140px 40px 60px; box-sizing: border-box;">
+    <div style="max-width: 1400px; margin: 0 auto;">
+      <p style="font-size: 12px; font-weight: 400; color: #FEBF00; letter-spacing: 0.01em; text-transform: uppercase; margin: 0 0 16px; font-family: var(--font-basegrotesk);">Get In Touch</p>
+      <h1 style="font-size: clamp(40px, 6vw, 65px); font-weight: 300; color: #fff; line-height: 1.15; letter-spacing: 0.01em; margin: 0; font-family: var(--font-basegrotesk);">Contact Us</h1>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <section style="background: #fff; width: 100%;">
+    <div class="contact-grid" style="max-width: 1400px; margin: 0 auto; padding: 80px 40px; box-sizing: border-box; display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
+
+      <!-- Left: info -->
+      <div>
+        <p style="font-size: 12px; font-weight: 400; color: #ababab; letter-spacing: 0.01em; text-transform: uppercase; margin: 0 0 20px; font-family: var(--font-basegrotesk);">Visit or Call</p>
+        <h2 style="font-size: clamp(28px, 3vw, 40px); font-weight: 300; color: #000; line-height: 1.2; letter-spacing: 0.01em; margin: 0 0 32px; font-family: var(--font-basegrotesk);">
+          We'd love to<br />hear from you.
+        </h2>
+        <hr style="border: none; border-top: 1px solid #000; margin: 0 0 32px;" />
+
+        <div style="display: flex; flex-direction: column; gap: 28px;">
+          <div>
+            <p style="font-size: 12px; font-weight: 500; color: #000; letter-spacing: 0.01em; text-transform: uppercase; margin: 0 0 6px; font-family: var(--font-basegrotesk);">Address</p>
+            <p style="font-size: 16px; font-weight: 300; color: #000; line-height: 1.6; letter-spacing: 0.01em; margin: 0; font-family: var(--font-basegrotesk);">
+              6968 Royal Oak Ave #102<br />
+              Burnaby, BC V5J 4J3<br />
+              <span style="color: #ababab;">Located in Saavin Living</span>
+            </p>
+          </div>
+          <div>
+            <p style="font-size: 12px; font-weight: 500; color: #000; letter-spacing: 0.01em; text-transform: uppercase; margin: 0 0 6px; font-family: var(--font-basegrotesk);">Phone</p>
+            <a href="tel:+16049231414" style="font-size: 16px; font-weight: 300; color: #000; text-decoration: none; letter-spacing: 0.01em; font-family: var(--font-basegrotesk);">(604) 923-1414</a>
+          </div>
+          <div>
+            <p style="font-size: 12px; font-weight: 500; color: #000; letter-spacing: 0.01em; text-transform: uppercase; margin: 0 0 6px; font-family: var(--font-basegrotesk);">Hours</p>
+            <p style="font-size: 16px; font-weight: 300; color: #000; line-height: 1.6; letter-spacing: 0.01em; margin: 0; font-family: var(--font-basegrotesk);">
+              Monday – Sunday<br />
+              <span style="color: #ababab;">10:00 am – 7:00 pm</span>
+            </p>
+          </div>
+          <div>
+            <p style="font-size: 12px; font-weight: 500; color: #000; letter-spacing: 0.01em; text-transform: uppercase; margin: 0 0 6px; font-family: var(--font-basegrotesk);">Instagram</p>
+            <a
+              href="https://www.instagram.com/k_side_hairsalon"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="font-size: 16px; font-weight: 300; color: #000; text-decoration: none; letter-spacing: 0.01em; font-family: var(--font-basegrotesk);"
+            >@k_side_hairsalon</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <div>
+        <p style="font-size: 12px; font-weight: 400; color: #ababab; letter-spacing: 0.01em; text-transform: uppercase; margin: 0 0 20px; font-family: var(--font-basegrotesk);">Send a Message</p>
+        <h2 style="font-size: clamp(28px, 3vw, 40px); font-weight: 300; color: #000; line-height: 1.2; letter-spacing: 0.01em; margin: 0 0 32px; font-family: var(--font-basegrotesk);">
+          Drop us a line.
+        </h2>
+        <hr style="border: none; border-top: 1px solid #000; margin: 0 0 32px;" />
+
+        <!-- Add action="https://formspree.io/f/YOUR_ID" and method="POST" to connect Formspree -->
+        <form id="contact-form" novalidate style="display: flex; flex-direction: column; gap: 24px;">
+
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div class="field">
+              <label for="name" style="display: block; font-size: 12px; font-weight: 500; color: #000; letter-spacing: 0.01em; text-transform: uppercase; margin-bottom: 8px; font-family: var(--font-basegrotesk);">Name</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your name"
+                required
+                autocomplete="name"
+                class="form-input"
+              />
+            </div>
+            <div class="field">
+              <label for="email" style="display: block; font-size: 12px; font-weight: 500; color: #000; letter-spacing: 0.01em; text-transform: uppercase; margin-bottom: 8px; font-family: var(--font-basegrotesk);">Email</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="your@email.com"
+                required
+                autocomplete="email"
+                class="form-input"
+              />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="subject" style="display: block; font-size: 12px; font-weight: 500; color: #000; letter-spacing: 0.01em; text-transform: uppercase; margin-bottom: 8px; font-family: var(--font-basegrotesk);">Subject</label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              placeholder="What's this about?"
+              required
+              class="form-input"
+            />
+          </div>
+
+          <div class="field">
+            <label for="message" style="display: block; font-size: 12px; font-weight: 500; color: #000; letter-spacing: 0.01em; text-transform: uppercase; margin-bottom: 8px; font-family: var(--font-basegrotesk);">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="Tell us anything…"
+              required
+              rows="6"
+              class="form-input"
+              style="resize: vertical; min-height: 140px;"
+            ></textarea>
+          </div>
+
+          <div>
+            <button type="submit" class="btn-primary" style="font-size: 15px;">
+              Send Message
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </button>
+            <p id="form-status" style="display: none; font-size: 14px; font-weight: 300; color: #ababab; margin: 16px 0 0; font-family: var(--font-basegrotesk); letter-spacing: 0.01em;"></p>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Map -->
+  <section style="background: #000; width: 100%;">
+    <iframe
+      title="K-SIDE Hair Salon location"
+      src="https://maps.google.com/maps?q=6968+Royal+Oak+Ave+%23102+Burnaby+BC+V5J+4J3&output=embed&hl=en"
+      width="100%"
+      style="height: 420px; border: 0; display: block; filter: grayscale(1) invert(1);"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </section>
+
+  <!-- CTA -->
+  <section style="background: #fff; border-top: 1px solid #000; width: 100%;">
+    <div style="max-width: 1400px; margin: 0 auto; padding: 65px 40px; box-sizing: border-box; display: flex; align-items: center; justify-content: space-between; gap: 40px; flex-wrap: wrap;">
+      <h2 style="font-size: clamp(28px, 4vw, 50px); font-weight: 300; color: #000; line-height: 1.2; letter-spacing: 0.01em; margin: 0; font-family: var(--font-basegrotesk);">
+        Ready to book?
+      </h2>
+      <a
+        href="https://book.squareup.com/appointments/oj8bsw2ayc6yto/location/LE021WER1QN40/services"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary"
+        style="font-size: 16px; flex-shrink: 0;"
+      >
+        Book an Appointment
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0;"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</Layout>
+
+<style>
+  .form-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px 16px;
+    font-size: 15px;
+    font-weight: 300;
+    font-family: var(--font-basegrotesk);
+    letter-spacing: 0.01em;
+    color: #000;
+    background: #fff;
+    border: 1px solid #000;
+    border-radius: 0;
+    outline: none;
+    transition: border-color 0.15s;
+    -webkit-appearance: none;
+  }
+  .form-input::placeholder { color: #ababab; }
+  .form-input:focus { border-color: #FEBF00; }
+  .form-input:invalid:not(:placeholder-shown) { border-color: #c00; }
+
+  @media (max-width: 767px) {
+    .contact-grid { grid-template-columns: 1fr !important; gap: 50px !important; }
+    .form-row { grid-template-columns: 1fr !important; }
+  }
+</style>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const status = document.getElementById('form-status') as HTMLParagraphElement;
+
+  form?.addEventListener('submit', async (e) => {
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    // If Formspree action is set, let the browser submit normally
+    if (form.action && form.action !== window.location.href) return;
+
+    // Dev fallback — show a placeholder message
+    e.preventDefault();
+    status.textContent = "Thanks for your message! We'll be in touch soon.";
+    status.style.display = 'block';
+    form.reset();
+  });
+</script>
